@@ -4,7 +4,7 @@ VALUES ("engineering"),
     ("legal"),
     ("sales");
  
-
+SELECT * FROM DEPARTMENT;
 
 INSERT INTO roles (title, salary, department_id)
 VALUES ("software engineer", 178000, 1),
@@ -16,8 +16,9 @@ VALUES ("software engineer", 178000, 1),
         ("finance assistant", 97000, 4),
         ("finance manager", 154000, 4);
 
-
-
+SELECT * FROM ROLES;
        
+INSERT INTO employee (first_name, last_name, roles_id, manager_id)
+    VALUES 
 
 

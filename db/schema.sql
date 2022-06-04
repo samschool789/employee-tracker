@@ -5,8 +5,6 @@ CREATE DATABASE employee_DB;
 USE employee_DB;
 
 
-
-
 CREATE TABLE department (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     department_name VARCHAR(30) NOT NULL
@@ -29,7 +27,13 @@ CREATE TABLE employee (
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    role_id INTEGER NOT NULL,
-    manager_id INTEGER NOT NULL,
-    department VARCHAR(30) NOT NULL
+    roles_id INTEGER NOT NULL,
+    manager_id INTEGER NULL,
+    FOREIGN KEY (roles_id)
+    REFERENCES roles(id)
+    ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (manager_id)
+    REFERENCES employee(id)
+    ON DELETE SET NULL ON UPDATE CASCADE
 );
+
