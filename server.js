@@ -1,14 +1,14 @@
-
-const express = require('express');
-//const inquirer = require("inquirer");
+const inquirer = require("inquirer");
 const mysql = require('mysql2');
+const cTable = require('console.table');
+
+const startScreen = ["View all employees", "View all roles", "View all departments","Add an employee",
+"Add a role", "Add a department", "update role for an employee","update employee's manager", "quit"]
 
 
-const PORT = process.env.PORT || 3001;
-const app = express();
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+
+
 
 const db = mysql.createConnection(
    {
@@ -23,7 +23,7 @@ const db = mysql.createConnection(
  );
 
 
-/*inquirer.prompt([
+inquirer.prompt([
    {
        type: 'list',
         name: 'action',
@@ -40,19 +40,14 @@ const db = mysql.createConnection(
          "quit"],
          
        }
-     ]);*/
+    
+])
+
+
       
-     db.query(`SELECT * FROM roles`, (err, rows) => {
-      console.log(rows);
-    }); 
+ 
 
 
- app.use((req, res) => {
-  res.status(404).end();
-});
 
- app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
 
     
