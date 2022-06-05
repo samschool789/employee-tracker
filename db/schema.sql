@@ -12,14 +12,14 @@ CREATE TABLE department (
 
 CREATE TABLE roles (
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(30) NOT NULL, 
-   salary DECIMAL(20, 2) NULL,
-  department_id INTEGER NOT NULL,
+  title VARCHAR(30), 
+   salary DECIMAL(8.2),
+  department_id INTEGER,
   FOREIGN KEY (department_id)
-        REFERENCES department(id)
-        ON DELETE CASCADE ON UPDATE CASCADE
+  REFERENCES department(id)
+  );    
 
-);
+
 
 
 
@@ -27,13 +27,13 @@ CREATE TABLE employee (
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    roles_id INTEGER NOT NULL,
-    manager_id INTEGER NULL,
-    FOREIGN KEY (roles_id)
-    REFERENCES roles(id)
-    ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (manager_id)
-    REFERENCES employee(id)
-    ON DELETE SET NULL ON UPDATE CASCADE
-);
+    roles_id INTEGER,
+    manager_id INTEGER,
+    FOREIGN KEY (roles_id) REFERENCES roles(id),
+    FOREIGN KEY (manager_id) REFERENCES employee(id)
+ );   
+    
+    
+   
+
 

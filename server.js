@@ -1,6 +1,6 @@
 
 const express = require('express');
-const inquirer = require("inquirer");
+//const inquirer = require("inquirer");
 const mysql = require('mysql2');
 
 
@@ -22,7 +22,8 @@ const db = mysql.createConnection(
    console.log('Connected to the employee database.')
  );
 
-inquirer.prompt([
+
+/*inquirer.prompt([
    {
        type: 'list',
         name: 'action',
@@ -31,23 +32,24 @@ inquirer.prompt([
         [ "View all employees", 
          "View all roles",
          "View all departments", 
-         "add an employee", 
-         "add a role", 
-         "add a department", 
+         "Add an employee", 
+         "Add a role", 
+         "Add a department", 
          "update role for an employee", 
          "update employee's manager", 
-         "view employees by manager", 
-         "delete a department", 
-         "delete a role", 
-         "delete an employee", 
-         "View the total utilized budget of a department", 
          "quit"],
+         
        }
-     ]);
+     ]);*/
       
-     
+     db.query(`SELECT * FROM roles`, (err, rows) => {
+      console.log(rows);
+    }); 
 
 
+ app.use((req, res) => {
+  res.status(404).end();
+});
 
  app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
