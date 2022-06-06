@@ -9,25 +9,25 @@ VALUES
 
 INSERT INTO roles (title, salary, department_id)
 VALUES 
-        ("software engineer", 178000, 1),
-        ("engineering manager", 279000, 1),
-        ("legal assistant", 98000, 2),
-        ("legal manager", 298000, 2),
-        ("sales rep", 78000, 3),
-        ("sales manager", 127000, 3),
-        ("finance assistant", 97000, 4),
-        ("finance manager", 154000, 4);
+        ("software engineer", 178000, 5),
+        ("regional manager", 279000, 1),
+        ("legal assistant", 98000, 6),
+        ("legal lead", 298000, 2),
+        ("sales rep", 78000, 7),
+        ("sales lead", 127000, 3),
+        ("finance assistant", 97000, 8),
+        ("finance lead", 154000, 4);
 
 
        
 INSERT INTO employees (first_name, last_name, roles_id)
     VALUES 
     ('Susan', 'Jenkins', 1),
-    ('Sam', 'Johnson', 1),
+    ('Sam', 'Johnson', 7),
     ('Janet', 'Williams', 2),
-    ('Sarah',  'Roberts', 2),
-    ('John', 'Jacobs', 3),
+    ('Sarah',  'Roberts', 5),
+    ('John', 'Jacobs', 6),
     ('Marshall', 'Jackson', 3),
-    ('Venus', 'Pendleton', 4),
+    ('Venus', 'Pendleton', 8),
     ('Bill', 'Thomas', 4);
 

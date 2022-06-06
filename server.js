@@ -2,9 +2,6 @@ const inquirer = require("inquirer");
 const mysql = require('mysql2');
 const cTable = require('console.table');
 
-const startScreen = ["View all employees", "View all roles", "View all departments","Add an employee",
-"Add a role", "Add a department", "update role for an employee","update employee's manager", "quit"]
-
 
 
 
@@ -22,7 +19,7 @@ const db = mysql.createConnection(
    console.log('Connected to the employee database.')
  );
 
-
+const startApp = () => 
 inquirer.prompt([
    {
        type: 'list',
@@ -41,7 +38,23 @@ inquirer.prompt([
          
        }
     
-])
+]).then((answer) => {
+  switch (answer.action) {
+    case 'View all employees':
+      showAll();
+      break;
+  }
+})
+
+const showAll = () => {
+  db.query(allEmployeeQuery, (err, results) => {
+    if (err) throw err;
+    console.log('');
+    console.table(('All Employees'), results)
+    startApp()
+  })
+}
+
 
 
       
