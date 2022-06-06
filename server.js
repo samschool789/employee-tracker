@@ -38,22 +38,30 @@ inquirer.prompt([
          
        }
     
-]).then((answer) => {
-  switch (answer.action) {
-    case 'View all employees':
-      showAll();
-      break;
-  }
-})
+])
 
-const showAll = () => {
-  db.query(allEmployeeQuery, (err, results) => {
-    if (err) throw err;
-    console.log('');
-    console.table(('All Employees'), results)
-    startApp()
-  })
-}
+app.get('/api/employees', (req, res) => {
+  const sql = `SELECT * FROM employees`;
+
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+
+app.post('/api/employee', ({ body }, res) => {
+  const errors = inputCheck(body, 'first_name', 'last_name', 'department_name');
+  if (errors) {
+    res.status(400).json({ error: errors });
+    return;
+  }
+});
 
 
 
