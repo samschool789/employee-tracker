@@ -1,4 +1,6 @@
-/*const db = mysql.createConnection(
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection(
     {
       host: 'localhost',
       // Your MySQL username,
@@ -10,4 +12,4 @@
     console.log('Connected to the employee database.')
   );
 
-module.exports = db;*/
+module.exports = connection;

@@ -1,23 +1,8 @@
+const connection = require('./config/connection')
 const inquirer = require("inquirer");
-const mysql = require('mysql2');
+
 const cTable = require('console.table');
 
-
-
-
-
-
-const db = mysql.createConnection(
-   {
-     host: 'localhost',
-     // Your MySQL username,
-     user: 'root',
-     // Your MySQL password
-     password: 'Whatup789',
-     database: 'employee_DB'
-   },
-   console.log('Connected to the employee database.')
- );
 
 const startApp = () => 
 inquirer.prompt([
@@ -40,7 +25,13 @@ inquirer.prompt([
     
 ])
 
-app.get('/api/employees', (req, res) => {
+
+
+
+
+
+//data base queries
+/*app.get('/api/employees', (req, res) => {
   const sql = `SELECT * FROM employees`;
 
   db.query(sql, (err, rows) => {
@@ -61,7 +52,7 @@ app.post('/api/employee', ({ body }, res) => {
     res.status(400).json({ error: errors });
     return;
   }
-});
+});*/
 
 
 
