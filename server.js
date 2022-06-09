@@ -29,8 +29,8 @@ const startApp = () =>
         viewEmployees();
       } else if (answers.action === "View all roles") {
         viewRoles();
-      } else if (answers.action === "View all deparments") {
-        viewDeparments();
+      } else if (answers.action === "View all departments") {
+        viewDepartments();
       } else {
         process.exit();
       }
@@ -54,7 +54,7 @@ const viewRoles = () => {
   });
 };
 
-const viewDeparments = () => {
+const viewDepartments = () => {
   console.log("query database for departments");
   connection.query("select * from departments", function (err, result) {
     if (err) console.log(err);
