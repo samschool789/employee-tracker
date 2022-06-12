@@ -1,6 +1,5 @@
 const connection = require("./config/connection");
 const inquirer = require("inquirer");
-
 const cTable = require("console.table");
 
 
@@ -45,14 +44,11 @@ const startApp = () =>
 
 const viewEmployees = () => {
   console.log("query database for employees");
-  connection.query(
-    "select * from employees",
-    function (err, result) {
-      if (err) console.log(err);
-      console.table(result);
-      startApp();
-    }
-  );
+  connection.query("select * from employees", function (err, result) {
+    if (err) console.log(err);
+    console.table(result);
+    startApp();
+  });
 };
 
 const viewRoles = () => {
@@ -72,6 +68,7 @@ const viewDepartments = () => {
     startApp();
   });
 };
+
 
 function addEmployee() {
   inquirer
@@ -103,7 +100,7 @@ function addEmployee() {
         [
           answer.eeFirstName,
           answer.eeLastName,
-          answer.roleID,
+          answer.rolesID,
           answer.managerID,
         ],
         function (err, res) {
@@ -136,7 +133,7 @@ function addRole() {
     ])
     .then(function (answer) {
       connection.query(
-        "INSERT INTO roles (title, salary, departments_id VALUES (?, ?, ?,)",
+        "INSERT INTO roles (title, salary, departments_id) VALUES (?, ?, ?)",
         [answer.roleName, answer.salaryTotal, answer.deptID],
         function (err, res) {
           if (err) throw err;
