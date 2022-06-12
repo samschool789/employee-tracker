@@ -1,6 +1,9 @@
 # Employee Tracker
  
-  ![](./video/readme.gif)
+  ![Walthrough video](https://github.com/samschool789/employee-tracker/blob/main/video/readme.gif)
+ 
+ 
+ 
   ## Description 
   It is an application used to store employees information and update them as needed.
   ## Table of Contents
